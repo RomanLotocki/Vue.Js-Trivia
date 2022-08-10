@@ -1,0 +1,42 @@
+{
+    "quizDb": [{
+            "id": "1",
+            "question": "Comment s'appelle la zone du système solaire, s'étendant au dela de l'orbite de Neptune et composée de divers petits corps célestes dont Pluton ?",
+            "choices": [{
+                    "choice1": "La ceinture de Karaté"
+                },
+                {
+                    "choice2": "La ceinture de d'astéroides"
+                },
+                {
+                    "choice3": "La ceinture de Kuiper"
+                },
+                {
+                    "choice4": "La ceinture de Newton"
+                }
+            ],
+            "answer": "La ceinture de Kuiper",
+            "explanation": "La ceinture de Kuiper est une zone du Système solaire s'étendant au-delà de l'orbite de Neptune, entre 30 et 55 unités astronomiques (ua). Cette zone en forme d'anneau est similaire à la ceinture d'astéroïdes, mais plus étendue, 20 fois plus large et de 20 à 200 fois plus massive. Comme la ceinture d'astéroïdes, elle est principalement composée de petits corps, restes de la formation du Système solaire, et d'au moins trois planètes naines, Pluton, Makémaké et Hauméa"
+        },
+        {
+            "id": "2",
+            "question": "Quelle cité antique a t-elle vue n'aitre Alexandre le Grand",
+            "choices": [{
+                    "choice1": "Pella"
+                },
+                {
+                    "choice2": "Samothraces"
+                },
+                {
+                    "choice3": "Alexandrie"
+                },
+                {
+                    "choice4": "Athènes"
+                }
+            ],
+            "answer": "Pella",
+            "explanation": "Pella (en grec ancien : Πέλλα / Pélla) est située en Macédoine-Centrale, en Grèce, surtout connue comme la capitale de l'ancien royaume de Macédoine"
+        }
+
+    ]
+}
