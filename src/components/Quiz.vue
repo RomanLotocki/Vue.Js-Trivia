@@ -16,10 +16,7 @@
       {{ item.question }}
     </p>
     <ul>
-        <li>La ceinture de Karaté</li>
-        <li>La ceinture de d'astéroides</li>
-        <li>La ceinture de Kuiper</li>
-        <li>La ceinture de Newton</li>
+        <li v-for="choice in item.choices" :key="choice"> {{ choice }}</li>
     </ul>
   </div>
 </template>
@@ -43,7 +40,13 @@ export default {
       else {
         return alert ("Le pseudo doit comporter au moins 3 caractères")
       }
+    },
+
+    nextQuestion(){
+      
     }
+    
+
   }
 }
 </script>
