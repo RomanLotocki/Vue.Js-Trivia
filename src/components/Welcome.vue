@@ -7,7 +7,7 @@
     </p>
     <label for="name">Votre pseudo : </label>
     <input v-model="userName" type="text" id="name" name="name" required minlength="4" maxlength="10" size="12">
-    <p><button>Commencer</button></p>
+    <p><button @click="goToQuestion">Commencer</button></p>
     <p>Bonjour : {{ this.userName }}</p>
   </div>
   <div v-else class="quiz">
@@ -34,6 +34,16 @@ export default {
     return {
       userName: "",
       welcomeComplete: true,
+    }
+  },
+  methods: {
+    goToQuestion() {
+      if (this.userName.length >= 4) {
+        return this.welcomeComplete = false
+      }
+      else {
+        return console.log("pas bon")
+      }
     }
   }
 }
