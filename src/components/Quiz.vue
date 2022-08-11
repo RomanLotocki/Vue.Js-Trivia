@@ -17,10 +17,13 @@
     <p>
       {{ item.question }}
     </p>
-    <ul>
-        <li v-for="choice in item.choices" :key="choice"> {{ choice }}</li>
+    <ul v-for="choice in item.choices" :key="choice">
+        <li> {{ choice }}</li>
+        <button>Valider</button>
     </ul>
-    <button @click="nextQuestion">Next</button>
+    <button @click="backQuestion" v-if="this.sliceA != 0">Back</button>
+    <button @click="nextQuestion" v-if="sliceA != quizDatas.length-1">Next</button>
+    <button v-if="sliceA == quizDatas.length-1">Send</button>
   </div>
 
   <!-- <div class="quiz2" v-for="item in quizDatas.slice(this.sliceA, this.sliceB)" :key="item.id">
@@ -61,6 +64,9 @@ export default {
 
     nextQuestion(){
         return [this.sliceA += 1, this.sliceB += 1]
+    },
+    backQuestion(){
+        return [this.sliceA -= 1, this.sliceB -= 1]
     }
     
 

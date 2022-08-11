@@ -23,6 +23,19 @@
             ],
             "answer": "Pella",
             "explanation": "Pella (en grec ancien : Πέλλα / Pélla) est située en Macédoine-Centrale, en Grèce, surtout connue comme la capitale de l'ancien royaume de Macédoine"
+        },
+        {
+            "id": "3",
+            "question": "En quelle année a été lancé la sonde spatiale Voyager 1",
+            "choices": [
+                "1977",
+                "2001",
+                "1985",
+                "1997"
+
+            ],
+            "answer": "1977",
+            "explanation": "Voyager 1 est l'une des deux sondes spatiales jumelles du programme spatial Voyager de la NASA destinées à l'étude des planètes externes du Système solaire. Elle est lancée le 5 septembre 1977. Située en 2022 à une distance de 156 unités astronomiques de notre planète, c'est l'objet humain le plus éloigné de la terre"
         }
 
     ]
