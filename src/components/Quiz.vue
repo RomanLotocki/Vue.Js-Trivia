@@ -1,4 +1,5 @@
 <template>
+  
   <div v-if="welcomeComplete" class="welcome">
     <h1>Bienvenue sur le projet Vue.Js Trivia</h1>
     <p>
@@ -6,11 +7,12 @@
       Pour commencer, entrez votre pseudo et validez
     </p>
     <label for="name">Votre pseudo : </label>
-    <input v-model="userName" type="text" id="name" name="name" required minlength="4" maxlength="10" size="12">
+    <input v-model="userName" type="text" id="name" name="name" required maxlength="10" size="12" @keyup.enter="goToQuestion">
     <p><button @click="goToQuestion">Commencer</button></p>
     <p>Bonjour : {{ this.userName }}</p>
   </div>
-  <div v-else class="quiz" v-for="item in quizDatas" :key="item.id">
+  
+  <div v-else class="quiz" v-for="item in quizDatas.slice(this.sliceA, this.sliceB)" :key="item.id">
     <h2>Question {{ item.id }}</h2>
     <p>
       {{ item.question }}
@@ -18,7 +20,20 @@
     <ul>
         <li v-for="choice in item.choices" :key="choice"> {{ choice }}</li>
     </ul>
+    <button @click="nextQuestion">Next</button>
   </div>
+
+  <!-- <div class="quiz2" v-for="item in quizDatas.slice(this.sliceA, this.sliceB)" :key="item.id">
+    <h2>Question {{ item.id }}</h2>
+    <p>
+      {{ item.question }}
+    </p>
+    <ul>
+        <li v-for="choice in item.choices" :key="choice"> {{ choice }}</li>
+    </ul>
+    <button @click="nextQuestion">Next</button>
+  </div> -->
+
 </template>
 
 <script>
@@ -30,6 +45,8 @@ export default {
       userName: "",
       welcomeComplete: true,
       quizDatas: sourceData.quizDb,
+      sliceA: 0,
+      sliceB: 1,
     }
   },
   methods: {
@@ -43,7 +60,7 @@ export default {
     },
 
     nextQuestion(){
-      
+        return [this.sliceA += 1, this.sliceB += 1]
     }
     
 
