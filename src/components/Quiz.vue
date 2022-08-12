@@ -24,14 +24,19 @@
     </ul> 
     <button @click="backQuestion" v-if="this.sliceA != 0">Back</button>
     <button @click="nextQuestion" v-if="sliceA != quizDatas.length-1">Next</button>
-    <button v-if="sliceA == quizDatas.length-1">Send</button>
+    <button @click="showResults" v-if="sliceA == quizDatas.length-1">Send</button>
   </div>
+  <ShowResult></ShowResult>
 </template>
 
 <script>
 import sourceData from '@/data.json'
+import ShowResult from '@/components/ShowResult.vue'
 export default {
   name: 'QuizComponent',
+  components: {
+    ShowResult
+  },
   data() {
     return {
       userName: "",
@@ -54,13 +59,13 @@ export default {
     },
 
     nextQuestion(){
-        return [this.sliceA += 1, this.sliceB += 1, this.itemIndex+= 1]
+        return [this.sliceA += 1, this.sliceB += 1, this.itemIndex += 1]
     },
 
     backQuestion(){
-        return [this.sliceA -= 1, this.sliceB -= 1]
+        return [this.sliceA -= 1, this.sliceB -= 1, this.itemIndex -= 1]
     },
-    
+
     getAnswers(index){
       if (this.answers[this.itemIndex] === undefined){
       this.answers.push(this.$refs.userAnswer[index].innerText)
@@ -69,21 +74,38 @@ export default {
         this.answers.splice(this.itemIndex, 1, this.$refs.userAnswer[index].innerText);
         }
       console.log(this.answers)
+      console.log(this.itemIndex)
     },
+    showResults(){
+      // this.answers.forEach(function (element, index) {
+      // console.log(element); // affiche "3", "5", "7"
+      // console.log(index);  // affiche "0", "1", "2"
+      // })
+      let goodAnswers = []
+      for (let item of this.quizDatas){
+        goodAnswers.push(item.answer)
+      }
+      let comparedResults = []
+
+      if(goodAnswers.length!=this.answers.length)
+     return alert ("Vous n'avez pas répondu à toutes les questions")
+    else
+    {
+     for (let i = 0; i <goodAnswers.length; i++){
+      comparedResults.push(goodAnswers[i]!=this.answers[i] ? false : true)
+     }
+    }
+      console.log(this.answers)
+      console.log(goodAnswers)
+      console.log(comparedResults)
+    },
+
+    nbrOfFalse(){
+
+    }
   }
 }
 </script>
-
-const arr = ['a', 'b', 'c'];
-
-const index = arr.indexOf('a'); // 👉️  0
-
-if (index !== -1) {
-  arr[index] = 'z';
-}
-
-console.log(arr); // 👉️ ['z', 'b', 'c']
-
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
