@@ -12,7 +12,7 @@
     <p>Bonjour : {{ this.userName }}</p>
   </div>
   
-  <div v-else class="quiz" v-for="item in quizDatas.slice(this.sliceA, this.sliceB)" :key="item.id">
+  <div v-else class="quiz" v-for="item in quizDatas.slice(this.sliceA, this.sliceB)" :key="item">
     <h2>Question {{ item.id }}</h2>
     <p>
       {{ item.question }}
@@ -40,6 +40,7 @@ export default {
       sliceA: 0,
       sliceB: 1,
       answers: [],
+      itemIndex: 0,
     }
   },
   methods: {
@@ -53,17 +54,42 @@ export default {
     },
 
     nextQuestion(){
-        return [this.sliceA += 1, this.sliceB += 1]
+        return [this.sliceA += 1, this.sliceB += 1, this.itemIndex+= 1]
     },
     backQuestion(){
         return [this.sliceA -= 1, this.sliceB -= 1]
     },
     getAnswers(index){
+      console.log(index)
+      console.log(this.itemIndex)
       console.log(this.$refs.userAnswer[index].innerText)
+
+      if (this.answers[this.itemIndex] === undefined){
+      this.answers.push(this.$refs.userAnswer[index].innerText)
+      }
+      else (console.log("already full"))
+      
+      // console.log("already full")
+      
+      
+      console.log(this.answers)
+      // console.log(this.answers[this.itemIndex])
+     
     },
   }
 }
 </script>
+
+const arr = ['a', 'b', 'c'];
+
+const index = arr.indexOf('a'); // 👉️  0
+
+if (index !== -1) {
+  arr[index] = 'z';
+}
+
+console.log(arr); // 👉️ ['z', 'b', 'c']
+
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
