@@ -56,25 +56,19 @@ export default {
     nextQuestion(){
         return [this.sliceA += 1, this.sliceB += 1, this.itemIndex+= 1]
     },
+
     backQuestion(){
         return [this.sliceA -= 1, this.sliceB -= 1]
     },
+    
     getAnswers(index){
-      console.log(index)
-      console.log(this.itemIndex)
-      console.log(this.$refs.userAnswer[index].innerText)
-
       if (this.answers[this.itemIndex] === undefined){
       this.answers.push(this.$refs.userAnswer[index].innerText)
       }
-      else (console.log("already full"))
-      
-      // console.log("already full")
-      
-      
+      else {
+        this.answers.splice(this.itemIndex, 1, this.$refs.userAnswer[index].innerText);
+        }
       console.log(this.answers)
-      // console.log(this.answers[this.itemIndex])
-     
     },
   }
 }
