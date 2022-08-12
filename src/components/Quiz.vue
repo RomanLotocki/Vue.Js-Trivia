@@ -1,7 +1,7 @@
 <template>
   
   <div v-if="welcomeComplete" class="welcome">
-    <h1>Bienvenue sur le projet Vue.Js Trivia</h1>
+    <h1 @click="getTitle" ref="title">Bienvenue sur le projet Vue.Js Trivia</h1>
     <p>
       Etes-vous pret à tenter le quiz ?<br>
       Pour commencer, entrez votre pseudo et validez
@@ -17,26 +17,15 @@
     <p>
       {{ item.question }}
     </p>
-    <ul v-for="choice in item.choices" :key="choice">
-        <li> {{ choice }}</li>
+    <ul v-for="(choice, index) in item.choices" :key="choice" @click="getAnswers(index)">
+        <li ref="userAnswer"> {{ choice }}</li>
         <button>Valider</button>
-    </ul>
+        
+    </ul> 
     <button @click="backQuestion" v-if="this.sliceA != 0">Back</button>
     <button @click="nextQuestion" v-if="sliceA != quizDatas.length-1">Next</button>
     <button v-if="sliceA == quizDatas.length-1">Send</button>
   </div>
-
-  <!-- <div class="quiz2" v-for="item in quizDatas.slice(this.sliceA, this.sliceB)" :key="item.id">
-    <h2>Question {{ item.id }}</h2>
-    <p>
-      {{ item.question }}
-    </p>
-    <ul>
-        <li v-for="choice in item.choices" :key="choice"> {{ choice }}</li>
-    </ul>
-    <button @click="nextQuestion">Next</button>
-  </div> -->
-
 </template>
 
 <script>
@@ -50,6 +39,7 @@ export default {
       quizDatas: sourceData.quizDb,
       sliceA: 0,
       sliceB: 1,
+      answers: [],
     }
   },
   methods: {
@@ -67,9 +57,10 @@ export default {
     },
     backQuestion(){
         return [this.sliceA -= 1, this.sliceB -= 1]
-    }
-    
-
+    },
+    getAnswers(index){
+      console.log(this.$refs.userAnswer[index].innerText)
+    },
   }
 }
 </script>
