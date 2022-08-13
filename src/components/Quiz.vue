@@ -1,5 +1,6 @@
 <template>
 
+  <div v-if="quizComplete == false" class="quiz">
   <div v-if="welcomeComplete" class="welcome">
     <h1 @click="getTitle" ref="title">Bienvenue sur le projet Vue.Js Trivia</h1>
     <p>
@@ -27,8 +28,8 @@
     <button @click="nextQuestion" v-if="sliceA != quizDatas.length - 1">Next</button>
     <button @click="showResults" v-if="sliceA == quizDatas.length - 1">Send</button>
   </div>
-  <p>felicitations tu as obtenu un score de {{ quizDatas.length - falseCounter }} sur {{ quizDatas.length }}</p>
-  <ShowResult></ShowResult>
+  </div>
+  <ShowResult v-if="quizComplete == true" :nbOfQuestions = quizDatas.length :falseAnswers="falseCounter" />
 </template>
 
 <script>
@@ -48,7 +49,8 @@ export default {
       sliceB: 1,
       answers: [],
       itemIndex: 0,
-      falseCounter: 0
+      falseCounter: 0,
+      quizComplete: false
     }
   },
   methods: {
@@ -100,7 +102,7 @@ export default {
           counter++
         }
       }
-      return this.falseCounter += counter
+      return [this.falseCounter += counter, this.quizComplete = true]
     }
   }
 }
