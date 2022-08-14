@@ -20,7 +20,7 @@
       {{ item.question }}
     </p>
     <ul v-for="(choice, index) in item.choices" :key="choice" @click="getAnswers(index)">
-      <li ref="userAnswer"> {{ choice }}</li>
+      <li ref="userAnswer" :class="{activeAnswer:isSelected}"> {{ choice }}</li>
       <button>Valider</button>
 
     </ul>
@@ -50,7 +50,8 @@ export default {
       answers: [],
       itemIndex: 0,
       falseCounter: 0,
-      quizComplete: false
+      quizComplete: false,
+      isSelected: false,
     }
   },
   methods: {
@@ -71,13 +72,26 @@ export default {
       return [this.sliceA -= 1, this.sliceB -= 1, this.itemIndex -= 1]
     },
 
+    /**
+     * get the user answers on click and send it in an array
+     * @param {number} index The index corresponding to the user's choice when clicking in the set of possible choices for the answer 
+     */
     getAnswers(index) {
       if (this.answers[this.itemIndex] === undefined) {
         this.answers.push(this.$refs.userAnswer[index].innerText)
       }
       else {
-        this.answers.splice(this.itemIndex, 1, this.$refs.userAnswer[index].innerText);
+        this.answers.splice(this.itemIndex, 1, this.$refs.userAnswer[index].innerText)
       }
+
+      this.isSelected = this.isSelected ? false : true
+      
+
+      console.log(this.$refs.userAnswer[index].innerText)
+      console.log(index)
+      console.log(typeof index)
+      console.log(this.itemIndex)
+      console.log(this.answers)
     },
     
     showResults() {
@@ -102,7 +116,7 @@ export default {
           counter++
         }
       }
-      return [this.falseCounter += counter, this.quizComplete = true]
+      return [this.falseCounter += counter, this.quizComplete = true] 
     }
   }
 }
@@ -112,6 +126,10 @@ export default {
 <style scoped lang="scss">
 .welcome {
   background-color: aquamarine;
+}
+
+.activeAnswer {
+  color: #21700e;
 }
 
 h3 {
