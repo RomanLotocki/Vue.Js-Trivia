@@ -10,7 +10,7 @@
     <label for="name">Votre pseudo : </label>
     <input v-model="userName" type="text" id="name" name="name" required maxlength="10" size="12"
       @keyup.enter="goToQuestion">
-    <p><button @click="goToQuestion">Commencer</button></p>
+    <p><button @click="goToQuestion">commencer</button></p>
     <p>Bonjour : {{ this.userName }}</p>
   </div>
 
@@ -20,13 +20,12 @@
       {{ item.question }}
     </p>
     <ul v-for="(choice, index) in item.choices" :key="choice" @click="getAnswers(index)">
-      <li ref="userAnswer" :class="{activeAnswer:isSelected}"> {{ choice }}</li>
-      <button>Valider</button>
+      <li ref="userAnswer"> {{ choice }}</li>
 
     </ul>
-    <button @click="backQuestion" v-if="this.sliceA != 0">Back</button>
-    <button @click="nextQuestion" v-if="sliceA != quizDatas.length - 1">Next</button>
-    <button @click="showResults" v-if="sliceA == quizDatas.length - 1">Send</button>
+    <button @click="backQuestion" v-if="this.sliceA != 0">retour</button>
+    <button @click="nextQuestion" v-if="sliceA != quizDatas.length - 1">valider</button>
+    <button @click="showResults" v-if="sliceA == quizDatas.length - 1">vérifier</button>
   </div>
   </div>
   <ShowResult v-if="quizComplete == true" :nbOfQuestions = quizDatas.length :falseAnswers="falseCounter" />
@@ -51,7 +50,6 @@ export default {
       itemIndex: 0,
       falseCounter: 0,
       quizComplete: false,
-      isSelected: false,
     }
   },
   methods: {
@@ -84,14 +82,12 @@ export default {
         this.answers.splice(this.itemIndex, 1, this.$refs.userAnswer[index].innerText)
       }
 
-      this.isSelected = this.isSelected ? false : true
-      
-
-      console.log(this.$refs.userAnswer[index].innerText)
-      console.log(index)
-      console.log(typeof index)
-      console.log(this.itemIndex)
-      console.log(this.answers)
+      for (let item of this.$refs.userAnswer){
+        item.style.color = "#2c3e50"
+        if(this.answers[this.itemIndex] == this.$refs.userAnswer[index].innerText){
+          this.$refs.userAnswer[index].style.color = "red"
+        }
+      }
     },
     
     showResults() {
@@ -126,10 +122,6 @@ export default {
 <style scoped lang="scss">
 .welcome {
   background-color: aquamarine;
-}
-
-.activeAnswer {
-  color: #21700e;
 }
 
 h3 {
