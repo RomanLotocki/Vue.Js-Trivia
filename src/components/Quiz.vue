@@ -1,13 +1,13 @@
 <template>
 
-  <div v-if="quizComplete == false" class="quiz">
+  <div v-if="quizComplete == false">
   <div v-if="welcomeComplete" class="welcome">
     <h1 @click="getTitle" ref="title">Bienvenue sur le projet Vue.Js Trivia</h1>
     <p>
-      Etes-vous pret à tenter le quiz ?<br>
+      Etes-vous prêt à tenter le quiz de culture général ?<br>
       Pour commencer, entrez votre pseudo et validez
     </p>
-    <label for="name">Votre pseudo : </label>
+    <label for="name">Mon pseudo : </label>
     <input v-model="userName" type="text" id="name" name="name" required maxlength="10" size="12"
       @keyup.enter="goToQuestion">
     <p><button @click="goToQuestion">commencer</button></p>
@@ -15,10 +15,12 @@
   </div>
 
   <div v-else class="quiz" v-for="item in quizDatas.slice(this.sliceA, this.sliceB)" :key="item">
-    <h2>Question {{ item.id }}</h2>
-    <p>
-      {{ item.question }}
+    <p> Salut {{ this.userName }} ! Clique sur la bonne réponse puis sur le bouton valider pour passer à la suivante.<br>
+    Bonne Chance !!
     </p>
+    <h3>
+      #{{ item.id }} {{ item.question }}
+    </h3>
     <ul v-for="(choice, index) in item.choices" :key="choice" @click="getAnswers(index)">
       <li ref="userAnswer"> {{ choice }}</li>
 
@@ -28,7 +30,7 @@
     <button @click="showResults" v-if="sliceA == quizDatas.length - 1">vérifier</button>
   </div>
   </div>
-  <ShowResult v-if="quizComplete == true" :nbOfQuestions = quizDatas.length :falseAnswers="falseCounter" />
+  <ShowResult v-if="quizComplete" :nbOfQuestions = quizDatas.length :falseAnswers="falseCounter" :quizDatas ="quizDatas" />
 </template>
 
 <script>
@@ -85,7 +87,7 @@ export default {
       for (let item of this.$refs.userAnswer){
         item.style.color = "#2c3e50"
         if(this.answers[this.itemIndex] == this.$refs.userAnswer[index].innerText){
-          this.$refs.userAnswer[index].style.color = "red"
+          this.$refs.userAnswer[index].style.color = "green"
         }
       }
     },
@@ -121,7 +123,13 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .welcome {
-  background-color: aquamarine;
+  background: linear-gradient(aqua, aquamarine);
+  padding: 1em;
+}
+
+.quiz {
+  background: linear-gradient(aqua, aquamarine);
+  padding: 1em;
 }
 
 h3 {
@@ -136,9 +144,5 @@ ul {
 li {
   display: inline-block;
   margin: 0 10px;
-}
-
-a {
-  color: #42b983;
 }
 </style>

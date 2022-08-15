@@ -103,19 +103,6 @@
             "explanation": "Les satellites galiléens, ou lunes galiléennes, sont les quatre plus grands satellites naturels de Jupiter. Il s'agit de Io, Europe, Ganymède et Callisto. Ils sont observés pour la première fois par Galilée"
         },
         {
-            "id": "8",
-            "question": "Autour de quelle planète gravitent les satellites galiléens ?",
-            "choices": [
-                "Neptune",
-                "Vénus",
-                "Jupiter",
-                "Tatooine"
-
-            ],
-            "answer": "Jupiter",
-            "explanation": "Les satellites galiléens, ou lunes galiléennes, sont les quatre plus grands satellites naturels de Jupiter. Il s'agit de Io, Europe, Ganymède et Callisto. Ils sont observés pour la première fois par Galilée"
-        },
-        {
             "id": "9",
             "question": "Quel est le premier long métrage d'animation produit par le Studio Ghibli ?",
             "choices": [
