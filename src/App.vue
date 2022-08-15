@@ -4,6 +4,10 @@
     <router-link to="/about">About</router-link>
   </nav>
   <router-view/>
+  <footer>
+    <p>Created by Roman Lotocki<br>
+    Powered by Vue.js</p>
+  </footer>
 </template>
 
 <style lang="scss">
@@ -13,7 +17,7 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  background-color: aqua;
+  background: linear-gradient(aquamarine, aqua);
 }
 
 nav {
@@ -26,6 +30,14 @@ nav {
     &.router-link-exact-active {
       color: #42b983;
     }
+  }
+}
+
+footer {
+  p {
+    margin: 0;
+    padding: 1em;
+    font-size: 0.8em;
   }
 }
 </style>

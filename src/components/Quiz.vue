@@ -2,21 +2,19 @@
 
   <div v-if="quizComplete == false">
   <div v-if="welcomeComplete" class="welcome">
-    <h1 @click="getTitle" ref="title">Bienvenue sur le projet Vue.Js Trivia</h1>
+    <h1 @click="getTitle" ref="title">Bienvenue sur le projet Vue.Js Quiz</h1>
     <p>
-      Etes-vous prêt à tenter le quiz de culture général ?<br>
       Pour commencer, entrez votre pseudo et validez
     </p>
     <label for="name">Mon pseudo : </label>
     <input v-model="userName" type="text" id="name" name="name" required maxlength="10" size="12"
       @keyup.enter="goToQuestion">
     <p><button @click="goToQuestion">commencer</button></p>
-    <p>Bonjour : {{ this.userName }}</p>
   </div>
 
   <div v-else class="quiz" v-for="item in quizDatas.slice(this.sliceA, this.sliceB)" :key="item">
-    <p> Salut {{ this.userName }} ! Clique sur la bonne réponse puis sur le bouton valider pour passer à la suivante.<br>
-    Bonne Chance !!
+    <p v-if="this.sliceA == 0"> Salut {{ this.userName }} ! Clique sur la bonne réponse puis sur le bouton valider pour passer à la suivante.<br>
+    Bonne chance !!
     </p>
     <h3>
       #{{ item.id }} {{ item.question }}
@@ -87,7 +85,7 @@ export default {
       for (let item of this.$refs.userAnswer){
         item.style.color = "#2c3e50"
         if(this.answers[this.itemIndex] == this.$refs.userAnswer[index].innerText){
-          this.$refs.userAnswer[index].style.color = "green"
+          this.$refs.userAnswer[index].style.color = "#42b983"
         }
       }
     },
@@ -123,13 +121,15 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .welcome {
-  background: linear-gradient(aqua, aquamarine);
   padding: 1em;
 }
 
 .quiz {
-  background: linear-gradient(aqua, aquamarine);
   padding: 1em;
+}
+
+h1 {
+  font-size: x-large;
 }
 
 h3 {
@@ -144,5 +144,10 @@ ul {
 li {
   display: inline-block;
   margin: 0 10px;
+}
+
+button {
+  margin-right: 0.5em;
+  margin-left: 0.5em;
 }
 </style>

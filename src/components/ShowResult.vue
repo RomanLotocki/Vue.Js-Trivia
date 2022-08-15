@@ -2,8 +2,7 @@
 <div class="result">
 <h2>Quiz terminé !</h2>
 <p>{{ this.resultMessage() }}<br>
-    Tu as obtenu un score de {{ nbOfQuestions - falseAnswers }} sur {{ nbOfQuestions }}<br>
-    Soit {{ falseAnswers }} mauvaises réponses
+    Tu as obtenu un score de {{ nbOfQuestions - falseAnswers }} sur {{ nbOfQuestions }} 
 </p>
 <div class="answers" v-for="item in quizDatas" :key="item">
 <h3>{{ item.question }}</h3>
@@ -31,7 +30,7 @@ export default {
                 return "Félicitations"
             }
             else {
-                return "Ton score est pas bon"
+                return "Ah... Ton score n'est pas dingue. Tu devrais te cultiver un peu plus..."
             }
         }
     }
@@ -39,7 +38,6 @@ export default {
 </script>
 <style scoped lang="scss">
 .result {
-    background: linear-gradient(aqua, aquamarine);
     padding: 1em;
 }
 .answers {
