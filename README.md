@@ -1,4 +1,6 @@
-# vue.js-trivia
+# vue.js-quiz
+Test your knowledge with this general knowledge quiz.  
+The application is in french :fr:
 
 ## Project setup
 ```
