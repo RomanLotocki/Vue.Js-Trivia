@@ -1,5 +1,5 @@
 # vue.js-quiz
-Test your knowledge with this general knowledge quiz.  
+Test your knowledge with this general culture quiz.  
 The application is in french :fr:
 
 ## Project setup
