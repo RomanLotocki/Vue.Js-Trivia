@@ -1,7 +1,8 @@
 <template>
   <div v-if="quizComplete == false">
   <div v-if="welcomeComplete" class="welcome">
-    <h1 @click="getTitle" ref="title">Bienvenue sur le Quiz</h1>
+    <img src="../assets/block.png" alt="Question Block">
+    <h1 @click="getTitle" ref="title">Bienvenue sur Try To Know</h1>
     <label for="name">Pour commencer, entrez un pseudo</label>
     <input placeholder="mon pseudo" v-model="userName" type="text" id="name" name="name" required maxlength="10" size="12"
       @keyup.enter="goToQuestion">
@@ -17,7 +18,7 @@
     </h3>
     <div class="answerstab">
       <ul>
-        <li v-for="(choice, index) in item.choices" :key="choice" @click="getAnswers(index)" ref="userAnswer">{{ choice }}</li>
+        <a href="#"><li v-for="(choice, index) in item.choices" :key="choice" @click="getAnswers(index)" ref="userAnswer">{{ choice }}</li></a>
       </ul>
   </div>
     <p class="button">
@@ -84,7 +85,7 @@ export default {
       for (let item of this.$refs.userAnswer){
         item.style.color = "#fcfdfd"
         if(this.answers[this.itemIndex] == this.$refs.userAnswer[index].innerText){
-          this.$refs.userAnswer[index].style.color = "#f0f";
+          this.$refs.userAnswer[index].style.color = "#F4CD1E";
         }
       }
     },
@@ -154,6 +155,11 @@ ul {
 li {
   display: block;
   margin: 10px 0;
+}
+
+a {
+  text-decoration: none;
+  color: #fcfdfd;
 }
 
 button {

@@ -44,7 +44,7 @@
   right: 0;
   width: 0;
   height: 2px;
-  background-color: #f0f;
+  background-color: #F4CD1E;
   transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
