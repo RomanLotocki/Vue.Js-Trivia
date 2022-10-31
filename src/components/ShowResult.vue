@@ -9,7 +9,9 @@
 <p>Bonne réponse : {{ item.answer }}<br>
 {{ item.explanation }}</p>
 </div>
-<button @click="reloadPage">recommencer</button>
+<p class="button">
+    <button @click="reloadPage"><span>recommencer</span></button>
+</p>
 </div>
 </template>
 
@@ -42,6 +44,6 @@ export default {
 }
 .answers {
   padding: 1em;
-  text-align: left;  
+  text-align: justify;  
 }
 </style>

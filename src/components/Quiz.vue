@@ -1,31 +1,30 @@
 <template>
-
   <div v-if="quizComplete == false">
   <div v-if="welcomeComplete" class="welcome">
-    <h1 @click="getTitle" ref="title">Bienvenue sur le projet Vue.Js Quiz</h1>
-    <p>
-      Pour commencer, entrez votre pseudo et validez
-    </p>
-    <label for="name">Mon pseudo : </label>
-    <input v-model="userName" type="text" id="name" name="name" required maxlength="10" size="12"
+    <h1 @click="getTitle" ref="title">Bienvenue sur le Quiz</h1>
+    <label for="name">Pour commencer, entrez un pseudo</label>
+    <input placeholder="mon pseudo" v-model="userName" type="text" id="name" name="name" required maxlength="10" size="12"
       @keyup.enter="goToQuestion">
-    <p><button @click="goToQuestion">commencer</button></p>
+    <p class="button"><button @click="goToQuestion"><span>commencer</span></button></p>
   </div>
 
   <div v-else class="quiz" v-for="item in quizDatas.slice(this.sliceA, this.sliceB)" :key="item">
-    <p v-if="this.sliceA == 0"> Salut {{ this.userName }} ! Clique sur la bonne réponse puis sur le bouton valider pour passer à la suivante.<br>
+    <p v-if="this.sliceA == 0"> Salut <b>{{ this.userName }}</b> !<br>Clique sur la bonne réponse puis sur le bouton valider pour passer à la suivante.<br>
     Bonne chance !!
     </p>
     <h3>
       #{{ item.id }} {{ item.question }}
     </h3>
-    <ul v-for="(choice, index) in item.choices" :key="choice" @click="getAnswers(index)">
-      <li ref="userAnswer"> {{ choice }}</li>
-
-    </ul>
-    <button @click="backQuestion" v-if="this.sliceA != 0">retour</button>
-    <button @click="nextQuestion" v-if="sliceA != quizDatas.length - 1">valider</button>
-    <button @click="showResults" v-if="sliceA == quizDatas.length - 1">vérifier</button>
+    <div class="answerstab">
+      <ul>
+        <li v-for="(choice, index) in item.choices" :key="choice" @click="getAnswers(index)" ref="userAnswer">{{ choice }}</li>
+      </ul>
+  </div>
+    <p class="button">
+      <button @click="backQuestion" v-if="this.sliceA != 0"><span>retour</span></button>
+      <button @click="nextQuestion" v-if="sliceA != quizDatas.length - 1"><span>valider</span></button>
+      <button @click="showResults" v-if="sliceA == quizDatas.length - 1"><span>vérifier</span></button>
+    </p>
   </div>
   </div>
   <ShowResult v-if="quizComplete" :nbOfQuestions = quizDatas.length :falseAnswers="falseCounter" :quizDatas ="quizDatas" />
@@ -83,9 +82,9 @@ export default {
       }
 
       for (let item of this.$refs.userAnswer){
-        item.style.color = "#2c3e50"
+        item.style.color = "#fcfdfd"
         if(this.answers[this.itemIndex] == this.$refs.userAnswer[index].innerText){
-          this.$refs.userAnswer[index].style.color = "#42b983"
+          this.$refs.userAnswer[index].style.color = "#f0f";
         }
       }
     },
@@ -120,20 +119,31 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-.welcome {
+.welcome, .quiz {
   padding: 1em;
 }
-
-.quiz {
-  padding: 1em;
+.answerstab {
+  margin-bottom: 50px;
 }
 
 h1 {
-  font-size: x-large;
+  font-size: 30px;
+  margin: 30px 0;
 }
 
 h3 {
-  margin: 40px 0 0;
+  margin: 40px 0 ;
+}
+
+label {
+  display: block;
+  margin-bottom: 30px;
+}
+
+input {
+  margin-bottom: 30px;
+  height: 30px;
+  width: 130px;
 }
 
 ul {
@@ -142,8 +152,8 @@ ul {
 }
 
 li {
-  display: inline-block;
-  margin: 0 10px;
+  display: block;
+  margin: 10px 0;
 }
 
 button {
