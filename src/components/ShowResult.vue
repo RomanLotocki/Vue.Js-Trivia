@@ -6,8 +6,9 @@
 </p>
 <div class="answers" v-for="item in quizDatas" :key="item">
 <h3>{{ item.question }}</h3>
-<p>Bonne réponse : {{ item.answer }}<br>
-{{ item.explanation }}</p>
+<p>{{ this.answers[item.id - 1]}}</p>
+<p>Bonne réponse : {{ item.answer }}</p>
+<p>{{ item.explanation }}</p>
 </div>
 <p class="button">
     <button @click="reloadPage"><span>recommencer</span></button>
@@ -21,7 +22,8 @@ export default {
     props: {
         nbOfQuestions: Number,
         falseAnswers: Number,
-        quizDatas: Array 
+        quizDatas: Array,
+        answers: Array
     },
     methods: {
         reloadPage(){

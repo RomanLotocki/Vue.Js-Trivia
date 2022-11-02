@@ -28,7 +28,7 @@
     </p>
   </div>
   </div>
-  <ShowResult v-if="quizComplete" :nbOfQuestions = quizDatas.length :falseAnswers="falseCounter" :quizDatas ="quizDatas" />
+  <ShowResult v-if="quizComplete" :nbOfQuestions = quizDatas.length :falseAnswers="falseCounter" :quizDatas ="quizDatas" :answers = "answers"/>
 </template>
 
 <script>
@@ -88,6 +88,7 @@ export default {
           this.$refs.userAnswer[index].style.color = "#F4CD1E";
         }
       }
+      // console.log(this.answers);
     },
     
     showResults() {
