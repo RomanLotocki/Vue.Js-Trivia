@@ -146,6 +146,7 @@ input {
   margin-bottom: 30px;
   height: 30px;
   width: 130px;
+  border: 2px solid rgba(43,9,71,0.6);
 }
 
 ul {

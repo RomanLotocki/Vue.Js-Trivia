@@ -59,27 +59,22 @@ footer {
 
 button {
   position: relative;
-  outline: none;
-  text-decoration: none;
   border-radius: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  text-transform: uppercase;
   height: 45px;
   width: 130px;
   opacity: 1;
-  background-color: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.6);
+  background-color: #fcfdfd;
+  border: 2px solid rgba(43,9,71,0.6);
 }
 
 span {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  color: #000000;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.7px;
+  font-family: 'Roboto', sans-serif;
+  color: #2B0946;
+  font-size: 14px;
 }
 
 button:hover {

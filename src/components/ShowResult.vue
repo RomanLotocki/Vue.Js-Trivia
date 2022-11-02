@@ -4,10 +4,10 @@
 <p>{{ this.resultMessage() }}<br>
     Tu as obtenu un score de {{ nbOfQuestions - falseAnswers }} sur {{ nbOfQuestions }} 
 </p>
-<div class="answers" v-for="item in quizDatas" :key="item">
+<div class="answers" v-for="(item, index) in quizDatas" :key="item">
 <h3>{{ item.question }}</h3>
-<p>{{ this.answers[item.id - 1]}}</p>
-<p>Bonne réponse : {{ item.answer }}</p>
+<p class="userA"> Ta réponse : {{ this.answers[index]}}</p>
+<p class="correctA">Bonne réponse : {{ item.answer }}</p>
 <p>{{ item.explanation }}</p>
 </div>
 <p class="button">
@@ -47,5 +47,15 @@ export default {
 .answers {
   padding: 1em;
   text-align: justify;  
+}
+
+.userA {
+    font-weight: bold;
+    color: #F4CD1E;
+}
+
+.correctA {
+    font-weight: bold;
+    color: #83d032;
 }
 </style>
