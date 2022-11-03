@@ -29,7 +29,8 @@
 
  a {
   text-decoration: none;
-  color: #fcfdfd;
+  color: #F4CD1E;
+  font-weight: bold;
  }
  .underline{
   position: relative;

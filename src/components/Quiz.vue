@@ -18,7 +18,7 @@
     </h3>
     <div class="answerstab">
       <ul>
-        <a href="#"><li v-for="(choice, index) in item.choices" :key="choice" @click="getAnswers(index)" ref="userAnswer">{{ choice }}</li></a>
+        <li v-for="(choice, index) in item.choices" :key="choice" @click="getAnswers(index)" ref="userAnswer">{{ choice }}</li>
       </ul>
   </div>
     <p class="button">
@@ -157,6 +157,12 @@ ul {
 li {
   display: block;
   margin: 10px 0;
+}
+
+li:hover {
+  font-weight: bold;
+  font-size: large;
+  color: #F4CD1E;
 }
 
 a {
