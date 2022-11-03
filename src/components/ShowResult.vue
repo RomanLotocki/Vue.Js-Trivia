@@ -1,9 +1,8 @@
 <template>
 <div class="result">
 <h2>Quiz terminé !</h2>
-<p>{{ this.resultMessage() }}<br>
-    Tu as obtenu un score de {{ nbOfQuestions - falseAnswers }} sur {{ nbOfQuestions }} 
-</p>
+<p>Tu as obtenu un score de {{ nbOfQuestions - falseAnswers }} sur {{ nbOfQuestions }}</p>
+<p>{{ this.resultMessage() }}</p>
 <div class="answers" v-for="(item, index) in quizDatas" :key="item">
 <h3>{{ item.question }}</h3>
 <p class="userA"> Ta réponse : {{ this.answers[index]}}</p>
