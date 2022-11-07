@@ -6,10 +6,6 @@ const routes = [
     path: '/',
     name: 'home',
     component: HomeView,
-    meta: {
-      title: "TTK",
-      icon:"/lock.png" 
-    }
   },
   {
     path: '/about',

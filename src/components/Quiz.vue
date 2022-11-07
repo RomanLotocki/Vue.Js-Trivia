@@ -5,8 +5,8 @@
     <h1>Bienvenue sur Try To Know</h1>
     <label for="name">Pour commencer, entrez un pseudo</label>
     <input placeholder="mon pseudo" v-model="userName" type="text" id="name" name="name" required maxlength="10" size="12"
-      @keyup.enter="goToQuestion(); randomQuiz()">
-    <p class="button"><button @click="goToQuestion(); randomQuiz()"><span>commencer</span></button></p>
+      @keyup.enter="randomQuiz(); goToQuestion()">
+    <p class="button"><button @click="randomQuiz(); goToQuestion()"><span>commencer</span></button></p>
   </div>
 
   <div v-else class="quiz" v-for="item in quizDatas.slice(this.sliceA, this.sliceB)" :key="item">
@@ -63,7 +63,12 @@ export default {
     },
 
     nextQuestion() {
+      if (this.answers[this.itemIndex] != undefined){
       return [this.sliceA += 1, this.sliceB += 1, this.itemIndex += 1]
+      }
+      else {
+        return alert("Vous devez sélectionner une réponse")
+      }
     },
 
     backQuestion() {
@@ -88,7 +93,7 @@ export default {
           this.$refs.userAnswer[index].style.color = "#F4CD1E";
         }
       }
-      // console.log(this.answers);
+      console.log(this.answers);
     },
     
     showResults() {
