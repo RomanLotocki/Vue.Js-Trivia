@@ -1,18 +1,21 @@
 <template>
-<div class="result">
-<h2>Quiz terminé !</h2>
-<p>Tu as obtenu un score de {{ nbOfQuestions - falseAnswers }} sur {{ nbOfQuestions }}</p>
-<p>{{ this.resultMessage() }}</p>
-<div class="answers" v-for="(item, index) in quizDatas" :key="item">
-<h3>{{ item.question }}</h3>
-<p class="userA"> Ta réponse : {{ this.answers[index]}}</p>
-<p class="correctA">Bonne réponse : {{ item.answer }}</p>
-<p>{{ item.explanation }}</p>
-</div>
-<p class="button">
-    <button @click="reloadPage"><span>recommencer</span></button>
-</p>
-</div>
+    <div class="result">
+        <h2>Quiz terminé !</h2>
+        <p>Tu as obtenu un score de {{ nbOfQuestions - falseAnswers }} sur {{ nbOfQuestions }}</p>
+        <p>{{ this.resultMessage() }}</p>
+        <p class="button">
+            <button @click="reloadPage"><span>recommencer</span></button>
+        </p>
+        <div class="answers" v-for="(item, index) in quizDatas" :key="item">
+            <h3>{{ item.question }}</h3>
+            <p class="userA"> Ta réponse : {{ this.answers[index] }}</p>
+            <p class="correctA">Bonne réponse : {{ item.answer }}</p>
+            <p>{{ item.explanation }}</p>
+        </div>
+        <p class="button">
+            <button @click="reloadPage"><span>recommencer</span></button>
+        </p>
+    </div>
 </template>
 
 <script>
@@ -25,11 +28,11 @@ export default {
         answers: Array
     },
     methods: {
-        reloadPage(){
+        reloadPage() {
             location.reload()
         },
-        resultMessage(){
-            if (this.falseAnswers < this.nbOfQuestions/2){
+        resultMessage() {
+            if (this.falseAnswers < this.nbOfQuestions / 2) {
                 return "Félicitations"
             }
             else {
@@ -40,12 +43,10 @@ export default {
 }
 </script>
 <style scoped lang="scss">
-.result {
-    padding: 1em;
-}
+
 .answers {
-  padding: 1em;
-  text-align: justify;  
+    padding: 1em;
+    text-align: justify;
 }
 
 .userA {
