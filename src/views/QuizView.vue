@@ -4,7 +4,7 @@
 
 <script>
 // @ is an alias to /src
-import QuizComponent from '@/components/Quiz.vue'
+import QuizComponent from '@/components/QuizComponent.vue'
 
 export default {
   name: 'QuizView',

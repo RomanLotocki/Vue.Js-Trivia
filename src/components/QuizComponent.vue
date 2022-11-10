@@ -29,7 +29,7 @@
 
 <script>
 import sourceData from '@/data.json'
-import ShowResult from '@/components/ShowResult.vue'
+import ShowResult from '@/components/ShowResultComponent.vue'
 export default {
   name: 'QuizComponent',
   components: {

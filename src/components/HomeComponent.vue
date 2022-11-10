@@ -10,9 +10,9 @@
         <p class="button"><button @click="this.nameValidation()"><span>entrer</span></button></p>
     </div>
         <div v-else>
-        <p>Bienvenue {{ this.userName }}</p>
-        <p>Clique sur commencer pour lancer le quiz</p>
-        <p class="button"><button @click="goToQuiz()"><span>commencer</span></button></p>
+        <p id="welcomeMessage">Bienvenue {{ this.userName }} !</p>
+        <p id="dynamicMessage">Clique sur commencer pour lancer le quiz</p>
+        <p class="button"><button @click="goToQuiz()"><span id="dynamicButton">commencer</span></button></p>
     </div>
     </div>
 </template>
@@ -40,6 +40,9 @@ export default {
 
         goToQuiz() {
             this.$router.push({ name: 'quiz' });
+            document.getElementById("dynamicButton").innerText = "Reprendre";
+            document.getElementById("dynamicMessage").innerText = "Clique sur reprendre pour continuer ton Quiz";
+            document.getElementById("welcomeMessage").remove();
         }
     }
 }
