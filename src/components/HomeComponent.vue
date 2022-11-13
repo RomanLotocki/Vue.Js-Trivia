@@ -10,10 +10,21 @@
         <p class="button"><button @click="this.nameValidation()"><span>entrer</span></button></p>
     </div>
         <div v-else>
-        <p id="welcomeMessage">Bienvenue {{ this.userName }} !</p>
-        <p id="dynamicMessage">Clique sur commencer pour lancer le quiz</p>
-        <p class="button"><button @click="goToQuiz()"><span id="dynamicButton">commencer</span></button></p>
-    </div>
+            <p id="welcomeMessage">Bienvenue {{ this.userName }} !</p>
+            <p id="dynamicMessage">Clique sur commencer pour lancer le quiz</p>
+            <div class="quizCardContainer">
+                <div class="quizCard">
+                    <p class="quizTitle">Contre la montre</p>
+                    <button class="quizButton" @click="goToQuiz()"><span id="dynamicButton">commencer</span></button>
+                    <img class="quizIcon" src="../assets/hourglass.svg" alt="hourglass" height="64" width="64" />
+                </div>
+                <div class="quizCard">
+                    <p class="quizTitle">Mort subite</p>
+                    <button class="quizButton" @click="goToQuiz()"><span id="dynamicButton">commencer</span></button>
+                    <img class="quizIcon" src="../assets/hourglass.svg" alt="hourglass" height="64" width="64" />
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -52,5 +63,29 @@ export default {
 <style scoped lang="scss">
 .button {
     margin-top: 40px;
+}
+
+.quizCardContainer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.quizCard {
+    margin: 20px;
+    text-align: center;
+}
+
+.quizTitle {
+    font-weight: bold;
+    color: #F4CD1E;
+}
+
+.quizIcon {
+    margin-top: 1em;
+}
+
+.quizButton {
+    margin: auto;
 }
 </style>
