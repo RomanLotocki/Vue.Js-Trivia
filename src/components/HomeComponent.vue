@@ -15,13 +15,13 @@
             <div class="quizCardContainer">
                 <div class="quizCard">
                     <p class="quizTitle">Contre la montre</p>
-                    <button class="quizButton" @click="goToQuiz()"><span id="dynamicButton">commencer</span></button>
-                    <img class="quizIcon" src="../assets/hourglass.svg" alt="hourglass" height="64" width="64" />
+                    <img class="quizIcon" src="../assets/hourglass.png" alt="hourglass" height="64" width="64" />
+                    <button class="quizButton" @click="goToQuiz()"><span class="dynamicButton">commencer</span></button>
                 </div>
                 <div class="quizCard">
                     <p class="quizTitle">Mort subite</p>
-                    <button class="quizButton" @click="goToQuiz()"><span id="dynamicButton">commencer</span></button>
-                    <img class="quizIcon" src="../assets/hourglass.svg" alt="hourglass" height="64" width="64" />
+                    <img class="quizIcon" src="../assets/death.png" alt="hourglass" />
+                    <button class="quizButton" @click="goToQuiz()"><span class="dynamicButton">commencer</span></button>
                 </div>
             </div>
         </div>
@@ -51,7 +51,7 @@ export default {
 
         goToQuiz() {
             this.$router.push({ name: 'quiz' });
-            document.getElementById("dynamicButton").innerText = "Reprendre";
+            document.querySelector(".dynamicButton").innerText = "reprendre";
             document.getElementById("dynamicMessage").innerText = "Clique sur reprendre pour continuer ton Quiz";
             document.getElementById("welcomeMessage").remove();
         }
@@ -82,7 +82,7 @@ export default {
 }
 
 .quizIcon {
-    margin-top: 1em;
+    margin-bottom: 1em;
 }
 
 .quizButton {
