@@ -61,21 +61,27 @@ export default {
             this.$router.push({ name: 'quiz' });
             document.querySelector("#regularButton").innerText = "reprendre";
             document.getElementById("dynamicMessage").innerText = "Clique sur reprendre pour continuer ton Quiz";
-            document.getElementById("welcomeMessage").remove();
+            if(document.getElementById("welcomeMessage") != null) {
+                document.getElementById("welcomeMessage").remove();
+            }
         },
 
         goToTimerQuiz() {
             this.$router.push({ name: 'quiz' });
             document.querySelector("#timerButton").innerText = "reprendre";
             document.getElementById("dynamicMessage").innerText = "Clique sur reprendre pour continuer ton Quiz";
-            document.getElementById("welcomeMessage").remove();
+            if(document.getElementById("welcomeMessage") != null) {
+                document.getElementById("welcomeMessage").remove();
+            }
         },
 
         goToDeathQuiz() {
             this.$router.push({ name: 'quiz' });
             document.querySelector("#deathButton").innerText = "reprendre";
             document.getElementById("dynamicMessage").innerText = "Clique sur reprendre pour continuer ton Quiz";
-            document.getElementById("welcomeMessage").remove();
+            if(document.getElementById("welcomeMessage") != null) {
+                document.getElementById("welcomeMessage").remove();
+            }
         },
     }
 }
