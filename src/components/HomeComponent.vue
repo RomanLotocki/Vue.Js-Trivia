@@ -4,24 +4,29 @@
         <h1>Try To Know</h1>
 
         <div v-if="this.userLog">
-        <label for="name">Pour commencer, entrez un pseudo</label>
+        <label for="name">Pour commencer, entre un pseudo</label>
         <input placeholder="mon pseudo" v-model="userName" type="text" id="name" name="name" required maxlength="10"
             size="12" @keyup.enter="this.nameValidation()">
         <p class="button"><button @click="this.nameValidation()"><span>entrer</span></button></p>
     </div>
         <div v-else>
-            <p id="welcomeMessage">Bienvenue {{ this.userName }} !</p>
-            <p id="dynamicMessage">Clique sur commencer pour lancer le quiz</p>
+            <p id="welcomeMessage">Bienvenue <span class="quizTitle">{{ this.userName }}</span> !</p>
+            <p id="dynamicMessage">Clique sur commencer pour lancer le quiz de ton choix</p>
             <div class="quizCardContainer">
                 <div class="quizCard">
+                    <p class="quizTitle">Classic</p>
+                    <img class="quizIcon" src="../assets/shooting-star.png" alt="hourglass" height="64" width="64" />
+                    <button class="quizButton" @click="goToClassicQuiz()"><span id="regularButton">commencer</span></button>
+                </div>
+                <div class="quizCard">
                     <p class="quizTitle">Contre la montre</p>
-                    <img class="quizIcon" src="../assets/hourglass.png" alt="hourglass" height="64" width="64" />
-                    <button class="quizButton" @click="goToQuiz()"><span class="dynamicButton">commencer</span></button>
+                    <img class="quizIcon" src="../assets/hourglass.png" alt="death" height="64" width="64" />
+                    <button class="quizButton" @click="goToTimerQuiz()"><span id="timerButton">commencer</span></button>
                 </div>
                 <div class="quizCard">
                     <p class="quizTitle">Mort subite</p>
-                    <img class="quizIcon" src="../assets/death.png" alt="hourglass" />
-                    <button class="quizButton" @click="goToQuiz()"><span class="dynamicButton">commencer</span></button>
+                    <img class="quizIcon" src="../assets/death.png" alt="death" height="64" width="64" />
+                    <button class="quizButton" @click="goToDeathQuiz()"><span id="deathButton">commencer</span></button>
                 </div>
             </div>
         </div>
@@ -49,12 +54,26 @@ export default {
             }
         },
 
-        goToQuiz() {
+        goToClassicQuiz() {
             this.$router.push({ name: 'quiz' });
-            document.querySelector(".dynamicButton").innerText = "reprendre";
+            document.querySelector("#regularButton").innerText = "reprendre";
             document.getElementById("dynamicMessage").innerText = "Clique sur reprendre pour continuer ton Quiz";
             document.getElementById("welcomeMessage").remove();
-        }
+        },
+
+        goToTimerQuiz() {
+            this.$router.push({ name: 'quiz' });
+            document.querySelector("#timerButton").innerText = "reprendre";
+            document.getElementById("dynamicMessage").innerText = "Clique sur reprendre pour continuer ton Quiz";
+            document.getElementById("welcomeMessage").remove();
+        },
+
+        goToDeathQuiz() {
+            this.$router.push({ name: 'quiz' });
+            document.querySelector("#deathButton").innerText = "reprendre";
+            document.getElementById("dynamicMessage").innerText = "Clique sur reprendre pour continuer ton Quiz";
+            document.getElementById("welcomeMessage").remove();
+        },
     }
 }
 
