@@ -15,17 +15,20 @@
             <div class="quizCardContainer">
                 <div class="quizCard">
                     <p class="quizTitle">Classic</p>
-                    <img class="quizIcon" src="../assets/shooting-star.png" alt="hourglass" height="64" width="64" />
+                    <img v-tippy="{ content: 'Ici pas de pression !' }" 
+                    class="quizIcon" src="../assets/shooting-star.png" alt="hourglass" height="64" width="64" />
                     <button class="quizButton" @click="goToClassicQuiz()"><span id="regularButton">commencer</span></button>
                 </div>
                 <div class="quizCard">
                     <p class="quizTitle">Contre la montre</p>
-                    <img class="quizIcon" src="../assets/hourglass.png" alt="death" height="64" width="64" />
+                    <img v-tippy="{ content: 'Le décompte est lancé ...' }" 
+                    class="quizIcon" src="../assets/hourglass.png" alt="death" height="64" width="64" />
                     <button class="quizButton" @click="goToTimerQuiz()"><span id="timerButton">commencer</span></button>
                 </div>
                 <div class="quizCard">
                     <p class="quizTitle">Mort subite</p>
-                    <img class="quizIcon" src="../assets/death.png" alt="death" height="64" width="64" />
+                    <img v-tippy="{ content: 'Une erreur c\'est GAME OVER !' }"
+                    class="quizIcon" src="../assets/death.png" alt="death" height="64" width="64" />
                     <button class="quizButton" @click="goToDeathQuiz()"><span id="deathButton">commencer</span></button>
                 </div>
             </div>
@@ -107,4 +110,5 @@ export default {
 .quizButton {
     margin: auto;
 }
+
 </style>
